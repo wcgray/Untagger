@@ -7,7 +7,7 @@ Untagger is a removal and full text extraction of HTML written in Swift heavily 
 ## Usage
 
 ```swift
-UntaggerManager.sharedInstance.getText(url: url) { [weak self] (title, body, source, error) in
+UntaggerManager.sharedInstance.getText(url: url) { (title, body, source, error) in
             if error == nil {
                 print("Article title: \(title!)")
                 print("Article body: \(body!)")
