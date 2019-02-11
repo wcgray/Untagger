@@ -37,8 +37,7 @@ void parserEndDocument(void *user_data) {
     htmlParserSaxHandler.startElement = parserStartElement;
     htmlParserSaxHandler.endElement = parserEndElement;
     
-    bool success = htmlSAXParseDoc((const xmlChar*)[htmlString UTF8String], "utf-8", &htmlParserSaxHandler, &userData);
-    NSLog(@"parseHtmlString success: %@", @(success));
+    htmlSAXParseDoc((const xmlChar*)[htmlString UTF8String], "utf-8", &htmlParserSaxHandler, &userData);
 }
 
 @end

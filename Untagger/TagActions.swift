@@ -1,18 +1,18 @@
 import Foundation
 
-let TITLE : String = "de.l3s.boilerpipe/TITLE";
-let ARTICLE_METADATA : String = "de.l3s.boilerpipe/ARTICLE_METADATA";
-let INDICATES_END_OF_TEXT : String = "de.l3s.boilerpipe/INDICATES_END_OF_TEXT";
-let MIGHT_BE_CONTENT : String = "de.l3s.boilerpipe/MIGHT_BE_CONTENT";
-let VERY_LIKELY_CONTENT : String = "de.l3s.boilerpipe/VERY_LIKELY_CONTENT";
-let STRICTLY_NOT_CONTENT : String = "de.l3s.boilerpipe/STRICTLY_NOT_CONTENT";
-let HR : String = "de.l3s.boilerpipe/HR";
-let LI : String = "de.l3s.boilerpipe/LI";
+let TITLE : String = "untagger/TITLE";
+let ARTICLE_METADATA : String = "untagger/ARTICLE_METADATA";
+let INDICATES_END_OF_TEXT : String = "untagger/INDICATES_END_OF_TEXT";
+let MIGHT_BE_CONTENT : String = "untagger/MIGHT_BE_CONTENT";
+let VERY_LIKELY_CONTENT : String = "untagger/VERY_LIKELY_CONTENT";
+let STRICTLY_NOT_CONTENT : String = "untagger/STRICTLY_NOT_CONTENT";
+let HR : String = "untagger/HR";
+let LI : String = "untagger/LI";
 
-let HEADING : String = "de.l3s.boilerpipe/HEADING";
-let H1 : String = "de.l3s.boilerpipe/H1";
-let H2 : String = "de.l3s.boilerpipe/H2";
-let H3 : String = "de.l3s.boilerpipe/H3";
+let HEADING : String = "untagger/HEADING";
+let H1 : String = "untagger/H1";
+let H2 : String = "untagger/H2";
+let H3 : String = "untagger/H3";
 
 let ANCHOR_TEXT_START : String = "^#^"
 let ANCHOR_TEXT_END : String = "^^^"
@@ -123,7 +123,7 @@ class AnchorTextTagAction : TagAction {
         let oldValue = document.inAnchor
         document.inAnchor += 1
         if (oldValue > 0) {
-            print("Warning: SAX input contains nested A elements -- You have probably hit a bug in your HTML parser (e.g., NekoHTML bug #2909310). Please clean the HTML externally and feed it to boilerpipe again. Trying to recover somehow...");
+            print("Warning: SAX input contains nested A elements -- You have probably hit a bug in your HTML parser (e.g., NekoHTML bug #2909310). Please clean the HTML externally and feed it again. Trying to recover somehow...");
             
             return end(tagName: tagName);
         }

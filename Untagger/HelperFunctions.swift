@@ -1,9 +1,5 @@
 import Foundation
 
-func log(_ items: Any...) {
-    //print(items)
-}
-
 func splitOnPattern(source: String, pattern : String) -> [String] {
     if let regex = try? NSRegularExpression(pattern: pattern) {
         return splitOnRegex(source: source, regex: regex)
