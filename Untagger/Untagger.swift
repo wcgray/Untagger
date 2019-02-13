@@ -56,17 +56,21 @@ public class UntaggerManager {
         document.didProcessDocument = { [weak self] doc in
             self?.pendingDocuments[doc.id] = nil
             
+            let title = doc.title
+            let body = doc.toText()
+            
             DispatchQueue.main.async {
-                completion((title: doc.title, body: doc.toText(), source: UntaggerSource.init(url: url), error: nil))
+                completion((title: title, body: body, source: UntaggerSource.init(url: url), error: nil))
             }
         }
         
-        UntaggerManager.workingQueue.async {
+        UntaggerManager.workingQueue.async { [weak self] in
             if let htmlString = try? String(contentsOf: url, encoding: .utf8) {
                 parser.parseHtmlString(htmlString)
             } else if let htmlString = try? String(contentsOf: url) {
                 parser.parseHtmlString(htmlString)
             } else {
+                self?.pendingDocuments[document.id] = nil
                 DispatchQueue.main.async {
                     completion((title: nil, body: nil, source: UntaggerSource.init(url: url), error: UntaggerError.init(message: "Could not extract url '\(url.absoluteString)'.")))
                 }

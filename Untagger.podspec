@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Untagger'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Removal and full text extraction of HTML in Swift inspired by Boilerpipe'
 
 # This description is used to generate tags and improve search results.

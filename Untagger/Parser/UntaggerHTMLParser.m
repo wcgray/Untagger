@@ -8,7 +8,20 @@ static xmlSAXHandler htmlParserSaxHandler;
 
 void parserCharacters(void *user_data, const xmlChar *ch, int len) {
     UntaggerHTMLParser *parser = ((XmlParserStateData*)user_data)->parser;
-    [parser.delegate recievedCharacters:[NSString stringWithUTF8String:(const char *)ch]];
+    NSString * _Nullable characters = [NSString stringWithUTF8String:(const char *)ch];
+    xmlChar *chCopy = NULL;
+    if (!characters) {
+        chCopy = malloc(sizeof(xmlChar*) * (len + 1));
+        memcpy(chCopy, ch, sizeof(xmlChar*) * (len));
+        chCopy[len] = '\0';
+        characters = [NSString stringWithUTF8String:(const char *)chCopy];
+    }
+    
+    [parser.delegate recievedCharacters:characters];
+    
+    if (chCopy != NULL) {
+        free(chCopy);
+    }
 }
 
 void parserStartElement(void* user_data, const xmlChar* name, const xmlChar** attrs) {
