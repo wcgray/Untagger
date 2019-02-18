@@ -11,8 +11,8 @@ void parserCharacters(void *user_data, const xmlChar *ch, int len) {
     NSString * _Nullable characters = [NSString stringWithUTF8String:(const char *)ch];
     xmlChar *chCopy = NULL;
     if (!characters) {
-        chCopy = malloc(sizeof(xmlChar*) * (len + 1));
-        memcpy(chCopy, ch, sizeof(xmlChar*) * (len));
+        chCopy = malloc(sizeof(xmlChar) * (len + 1));
+        memcpy(chCopy, ch, sizeof(xmlChar) * (len));
         chCopy[len] = '\0';
         characters = [NSString stringWithUTF8String:(const char *)chCopy];
     }
