@@ -5,7 +5,9 @@
 
 <img src="https://github.com/wcgray/Untagger/blob/master/demo.gif" width="220" height="434" align=right /></a>
 
-Untagger is a removal and full text extraction of HTML written in Swift heavily inspired by <a href="https://github.com/kohlschutter/boilerpipe">Boilerpipe</a>.
+Untagger is a removal and full text extraction of HTML written in Swift heavily inspired by <a href="https://github.com/kohlschutter/boilerpipe">Boilerpipe</a>. Like Boilerpipe, Untagger provides algorithms to detect and remove the surplus "clutter" (boilerplate, templates) around the main textual content of a web page.
+
+The algorithms used by the library are based on concepts of the paper <a href="http://www.l3s.de/~kohlschuetter/boilerplate/">"Boilerplate Detection using Shallow Text Features"</a> by Christian Kohlschütter et al., presented at WSDM 2010 -- The Third ACM International Conference on Web Search and Data Mining New York City, NY USA.
 ## Installation
 
 Use CocoaPods:
