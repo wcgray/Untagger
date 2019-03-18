@@ -2,6 +2,7 @@
 <img src="https://github.com/wcgray/Untagger/blob/master/logo.png" width="320" height="104"/></a>
 </div>
 <br>
+***
 
 <img src="https://github.com/wcgray/Untagger/blob/master/demo.gif" width="220" height="434" align=right /></a>
 
