@@ -2,10 +2,10 @@
 <img src="https://github.com/wcgray/Untagger/blob/master/logo.png" width="320" height="104"/></a>
 </div>
 <br><br>
+
+<img src="https://github.com/wcgray/Untagger/blob/master/demo.gif" width="220" height="434" align=right /></a>
+
 Untagger is a removal and full text extraction of HTML written in Swift heavily inspired by <a href="https://github.com/kohlschutter/boilerpipe">Boilerpipe</a>.
-
-<img src="https://github.com/wcgray/Untagger/blob/master/demo.gif" width="440" height="868" /></a>
-
 ## Installation
 
 Use CocoaPods:
