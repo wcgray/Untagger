@@ -1,4 +1,4 @@
-# Untagger
+<img src="https://github.com/wcgray/Untagger/blob/master/logo.png" width="641" height="208" /></a>
 
 Untagger is a removal and full text extraction of HTML written in Swift heavily inspired by <a href="https://github.com/kohlschutter/boilerpipe">Boilerpipe</a>.
 
