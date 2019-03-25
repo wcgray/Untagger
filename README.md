@@ -42,6 +42,9 @@ UntaggerManager.sharedInstance.getText(url: url) { (title, body, source, error) 
             }
         }
 ```
+## Author
+
+wcgray, cam@tinsoldiersoftware.com
 
 ## License
 
