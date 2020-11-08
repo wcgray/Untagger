@@ -2,7 +2,7 @@ import Foundation
 
 class UnicodeTokenizer {
     static let PAT_WORD_BOUNDARY = try! NSRegularExpression(pattern: "\\b")
-    static let OTHER_CHARACTER_WORD_BOUNDARY = try! NSRegularExpression(pattern: "([’%“”])")
+    static let OTHER_CHARACTER_WORD_BOUNDARY = try! NSRegularExpression(pattern: "([’%“”…])")
     static let SPACE_NOT_WORD_BOUNDARY = try! NSRegularExpression(pattern: "[ \u{2063}]+")
     static let SPACE_BOUNDARY = try! NSRegularExpression(pattern: "[ ]+")
     static let WORD_REGEX = try! NSRegularExpression(pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{No}]")

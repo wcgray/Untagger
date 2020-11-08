@@ -17,7 +17,7 @@ class DocumentTitleMatchClassifier : BaseFilter {
     private func cachedRegex(pattern: String) -> NSRegularExpression? {
         if let regex = cachedRegex[pattern] {
             return regex
-        } else if let regex = try? NSRegularExpression(pattern: "[ ]+[\\-][ ]+") {
+        } else if let regex = try? NSRegularExpression(pattern: pattern) {
             cachedRegex[pattern] = regex
             return regex
         } else {
