@@ -1,16 +1,14 @@
 import Foundation
 
-class TrailingHeadlineToUntaggerFilter : BaseFilter {
+class TrailingHeadlineToUntaggerFilter: BaseFilter {
     override func process() -> Bool {
         var changes = false
-        
-        
         let reverseTextBlocks = document.textBlocks.reversed()
-        
+
         for tb in reverseTextBlocks {
-            if (tb.isContent) {
+            if tb.isContent {
                 let hasLabel = tb.hasLabel(HEADING)
-                if (hasLabel) {
+                if hasLabel {
                     tb.isContent = false
                     changes = true
                 } else {
@@ -18,7 +16,7 @@ class TrailingHeadlineToUntaggerFilter : BaseFilter {
                 }
             }
         }
-        
+
         return changes
     }
 }

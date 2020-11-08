@@ -5,8 +5,8 @@ class BaseFilter {
     init(document: UntaggerDocument) {
         self.document = document
     }
-    
+
     func process() -> Bool {
-        return false;
+        return false
     }
 }

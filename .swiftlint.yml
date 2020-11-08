@@ -1,0 +1,7 @@
+disabled_rules:
+  - identifier_name
+  - for_where
+  - force_try
+  - cyclomatic_complexity
+  - type_body_length
+  - function_body_length
