@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Untagger'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'Removal and full text extraction of HTML in Swift inspired by Boilerpipe'
 
 # This description is used to generate tags and improve search results.
@@ -26,8 +26,8 @@ Untagger is a removal and full text extraction of HTML written in Swift heavily 
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'wcgray' => 'cam@tinsoldiersoftware.com' }
   s.source           = { :git => 'https://github.com/wcgray/Untagger.git', :tag => s.version.to_s }
-  s.ios.deployment_target = '8.0'
-  s.swift_version = '4.0'
+  s.ios.deployment_target = '9.0'
+  s.swift_version = '5.0'
   s.source_files = 'Untagger/**/*.{swift,m,h}'
   s.public_header_files = 'Untagger/**/*.h'
   s.module_name = 'Untagger'
