@@ -2,6 +2,7 @@ import Foundation
 
 class UnicodeTokenizer {
     static let PAT_WORD_BOUNDARY = try! NSRegularExpression(pattern: "\\b")
+    static let OTHER_CHARACTER_WORD_BOUNDARY = try! NSRegularExpression(pattern: "([’%“”])")
     static let SPACE_NOT_WORD_BOUNDARY = try! NSRegularExpression(pattern: "[ \u{2063}]+")
     static let SPACE_BOUNDARY = try! NSRegularExpression(pattern: "[ ]+")
     static let WORD_REGEX = try! NSRegularExpression(pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{No}]")
@@ -13,10 +14,9 @@ class UnicodeTokenizer {
     static func tokenize(_ source : String) -> [String] {
         let unicodeWordBoundary = "\u{2063}";
         
-        var workingString = replaceMatches(source: source, regex: UnicodeTokenizer.PAT_WORD_BOUNDARY, replacement: unicodeWordBoundary)
-            //replaceMatches(source, PAT_WORD_BOUNDARY_REGEX, unicodeWordBoundary);
-        //let secondReplacement = firstReplacement
-        //let secondReplacement = removeUnicodeWordBoundariesAroundNonWordCharacters(firstReplacement, unicodeWordBoundary);
+        var workingString = replaceMatches(source: source, regex: DocumentTitleMatchClassifier.titleRegex, replacement: unicodeWordBoundary)
+        workingString = replaceMatches(source: workingString, regex: UnicodeTokenizer.OTHER_CHARACTER_WORD_BOUNDARY, replacement: "\u{2063}$1\u{2063}")
+        
         workingString = replaceMatches(source: workingString, regex: UnicodeTokenizer.SPACE_NOT_WORD_BOUNDARY, replacement: " ")
         
         let trimmedString = workingString.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -10,7 +10,7 @@ func splitOnPattern(source: String, pattern : String) -> [String] {
 
 func replaceMatches(source: String, regex : NSRegularExpression, replacement : String) -> String {
     let workingTitle = NSMutableString.init(string: source)
-    DocumentTitleMatchClassifier.titleRegex.replaceMatches(in: workingTitle, options: [], range: NSMakeRange(0, workingTitle.length), withTemplate: replacement)
+    regex.replaceMatches(in: workingTitle, options: [], range: NSMakeRange(0, workingTitle.length), withTemplate: replacement)
     return workingTitle as String
 }
 

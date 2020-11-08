@@ -21,4 +21,75 @@ class KeepLargestBlockBlockFilter : BaseFilter {
         
         return result
     }
+    
+    override func process() -> Bool {
+        if (self.document.textBlocks.count < 2) {
+          return false
+        }
+
+        var maxNumWords = -1
+        var largestBlock: TextBlock?
+        var level = -1;
+
+        var i = 0
+        var n = -1
+        for tb in self.document.textBlocks {
+          if tb.isContent {
+            let nw = tb.numWords
+
+            if (nw > maxNumWords) {
+              largestBlock = tb
+              maxNumWords = nw
+
+              n = i;
+
+              if expandToSameLevelText {
+                level = tb.tagLevel
+              }
+            }
+          }
+            
+          i += 1
+        }
+        
+        for tb in self.document.textBlocks {
+          if (tb === largestBlock) {
+            tb.isContent = true
+            tb.addLabel(VERY_LIKELY_CONTENT)
+          } else {
+            tb.isContent = false
+            tb.addLabel(MIGHT_BE_CONTENT)
+          }
+        }
+        
+        if (expandToSameLevelText && n != -1) {
+          //for (ListIterator<TextBlock> it = textBlocks.listIterator(n); it.hasPrevious();) {
+          for tb in self.document.textBlocks[0..<(self.document.textBlocks.count - 1)] {
+            let tl = tb.tagLevel
+            if tl < level {
+              break
+            } else if tl == level {
+              if tb.numWords >= minWords {
+                tb.isContent = true
+              }
+            }
+          }
+            
+          //for (ListIterator<TextBlock> it = textBlocks.listIterator(n); it.hasNext();) {
+          for tb in self.document.textBlocks[1..<self.document.textBlocks.count] {
+            //TextBlock tb = it.next();
+            let tl = tb.tagLevel
+            if tl < level {
+              break
+            } else if tl == level {
+              if tb.numWords >= minWords {
+                tb.isContent = true
+              }
+            }
+          }
+            
+        }
+
+        return true
+    }
 }

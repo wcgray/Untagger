@@ -44,11 +44,17 @@ class NumWordsRulesClassifierFilter : BaseFilter {
             return false;
         }
         
+        let emptyTextBlock = TextBlock()
+        emptyTextBlock.offsetBlocksEnd = -1
+        emptyTextBlock.offsetBlocksStart = -1
+        
         for (index,currentBlock) in document.textBlocks.enumerated() {
-            let prevBlock : TextBlock? = index - 1 > 0 ? document.textBlocks[index  - 1] : nil
-            let nextBlock : TextBlock? = index + 1 < document.textBlocks.count ? document.textBlocks[index  + 1] : nil
-            
-            hasChanges = classify(prev: prevBlock, curr: currentBlock, next: nextBlock) || hasChanges
+            if index > 0 {
+                let prevBlock : TextBlock = index - 1 >= 0 ? document.textBlocks[index - 1] : emptyTextBlock
+                let nextBlock : TextBlock = index + 1 < document.textBlocks.count ? document.textBlocks[index + 1] : emptyTextBlock
+                
+                hasChanges = classify(prev: prevBlock, curr: currentBlock, next: nextBlock) || hasChanges
+            }
         }
         
         return hasChanges;
