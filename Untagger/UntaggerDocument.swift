@@ -39,6 +39,9 @@ class UntaggerDocument : NSObject, UntaggerHTMLParserDelegate {
     
     var labelStacks : [[LabelActions]] = []
 
+    private let twoOrMoreSpaces = try! NSRegularExpression.init(pattern: "[ ]{2,}")
+    private let spaceBeforePluralPossessive = try! NSRegularExpression.init(pattern: " 's")
+    
     override init() {
         super.init()
         self.id = UUID().uuidString
@@ -59,7 +62,10 @@ class UntaggerDocument : NSObject, UntaggerHTMLParserDelegate {
                 }
             }
             
-            sb += block.text
+            var textBlockText = replaceMatches(source: block.text, regex: twoOrMoreSpaces, replacement: " ")
+            textBlockText = replaceMatches(source: textBlockText, regex: spaceBeforePluralPossessive, replacement: "'s")
+            
+            sb += textBlockText
             sb += "\n"
         }
         
