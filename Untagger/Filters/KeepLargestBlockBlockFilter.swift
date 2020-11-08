@@ -63,7 +63,6 @@ class KeepLargestBlockBlockFilter : BaseFilter {
         }
         
         if (expandToSameLevelText && n != -1) {
-          //for (ListIterator<TextBlock> it = textBlocks.listIterator(n); it.hasPrevious();) {
           for tb in self.document.textBlocks[0..<(self.document.textBlocks.count - 1)] {
             let tl = tb.tagLevel
             if tl < level {
@@ -75,9 +74,7 @@ class KeepLargestBlockBlockFilter : BaseFilter {
             }
           }
             
-          //for (ListIterator<TextBlock> it = textBlocks.listIterator(n); it.hasNext();) {
           for tb in self.document.textBlocks[1..<self.document.textBlocks.count] {
-            //TextBlock tb = it.next();
             let tl = tb.tagLevel
             if tl < level {
               break
